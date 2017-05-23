@@ -7,7 +7,8 @@ and validates it.
 
 ```jsx
 import React from 'react';
-import createForm from 'utils/form/create-form';
+import yup from 'yup';
+import createForm from '@coverhound/react-form-validation';
 
 const FormComponent = ({ values, errors, onChange, onBlur, onSubmit }) => (
   <form onSubmit={onSubmit}>
@@ -29,7 +30,7 @@ class PageWithForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event, { values, errors, isValid }) {
+  handleSubmit({ values, errors, isValid }) {
     this.props.createResource(values).catch((err) => this.setState({ errors: err }));
   }
 
